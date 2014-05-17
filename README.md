@@ -9,7 +9,7 @@ This is a repository of miscellaneous tools that may be useful for Mata programm
 
 Descriptions, remarks, and examples are collected by file.
 
-[**matatools_capture.mata**](https://github.com/jrfiedler/matatools/README_capture.md) - for capturing errors and/or output
+[**matatools_capture.mata**](https://github.com/jrfiedler/matatools/blob/master/README_capture.md) - for capturing errors and/or output
 
 
 Authors

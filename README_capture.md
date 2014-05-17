@@ -42,3 +42,5 @@ examples
 
     : rv
       211
+
+See `help mata mt_capture` for more examples.
