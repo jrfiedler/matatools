@@ -13,22 +13,22 @@
 
 {p 8 20 2}
 {it:real scalar}
-{cmd:mt_capture(}{it:func_ptr}{cmd:,} {it:arg_ptrs} [{cmd:,} {it:rv_ptr}]{cmd:)}
+{cmd:mt_capture(}{it:func}{cmd:,} {it:arg_ptrs} [{cmd:,} {it:rv_ptr}]{cmd:)}
 
 {p 8 20 2}
 {it:real scalar}
-{cmd:mt_method_capture(}{it:class_name}{cmd:,} {it:func_name}{cmd:,} {it:arg_ptrs} [{cmd:,} {it:rv_ptr}]{cmd:)}
+{cmd:mt_method_capture(}{it:inst_name}{cmd:,} {it:meth_name}{cmd:,} {it:arg_ptrs} [{cmd:,} {it:rv_ptr}]{cmd:)}
 
 {p 4 8 2}
 where
 
 {p 8 12 2}
-	{it:func_ptr} is a pointer to a function (i.e., a {it:pointer(function) scalar})
+	{it:func} is a pointer to a function (i.e., a {it:pointer(function) scalar}), or the string name of the function
 
 {p 8 12 2}
-	{it:class_name} is a {it:string scalar}
+	{it:inst_name} is a {it:string scalar} containing the name of the class instance
 
-	{it:func_name} is a {it:string scalar}
+	{it:meth_name} is a {it:string scalar} containing the name of the method
 {p 8 12 2}
 
 {p 8 12 2}
@@ -134,15 +134,15 @@ Some tests you might write:
 
 {title:Conformability}
 
-    {cmd:mt_capture(}{it:func_ptr}{cmd:,} {it:arg_ptrs} [{cmd:,} {it:rv_ptr}]{cmd:)}:
-        {it:func_ptr}:  1 {it:x} 1
+    {cmd:mt_capture(}{it:func}{cmd:,} {it:arg_ptrs} [{cmd:,} {it:rv_ptr}]{cmd:)}:
+            {it:func}:  1 {it:x} 1
         {it:arg_ptrs}:  1 {it:x c}  or  {it:r x} 1  or  zero-dimensional
           {it:rv_ptr}:  1 {it:x} 1
           {it:result}:  1 {it:x} 1.
 
-    {cmd:mt_method_capture(}{it:class_name}{cmd:,} {it:func_name}{cmd:,} {it:arg_ptrs} [{cmd:,} {it:rv_ptr}]{cmd:)}:
-      {it:class_name}:  1 {it:x} 1
-       {it:func_name}:  1 {it:x} 1
+    {cmd:mt_method_capture(}{it:inst_name}{cmd:,} {it:meth_name}{cmd:,} {it:arg_ptrs} [{cmd:,} {it:rv_ptr}]{cmd:)}:
+       {it:inst_name}:  1 {it:x} 1
+       {it:meth_name}:  1 {it:x} 1
         {it:arg_ptrs}:  1 {it:x c}  or  {it:r x} 1  or  zero-dimensional
           {it:rv_ptr}:  1 {it:x} 1
           {it:result}:  1 {it:x} 1.
@@ -151,22 +151,22 @@ Some tests you might write:
 {title:Diagnostics}
 
 {p 4 8 8}
-{cmd:mt_capture(}{it:func_ptr}{cmd:,} {it:arg_ptrs} [{cmd:,} {it:rv_ptr}]{cmd:)} aborts
+{cmd:mt_capture(}{it:func}{cmd:,} {it:arg_ptrs} [{cmd:,} {it:rv_ptr}]{cmd:)} aborts
 with error if {break}
-{it:func_ptr} is not a pointer to a function,{break}
+{it:func} is not a pointer to a function or is not a string,{break}
 {it:arg_ptrs} is not a vector of pointers, or{break}
 {it:rv_ptr} (if used) is not a pointer scalar.
 
 {p 4 8 8}
-{cmd:mt_method_capture(}{it:class_name}{cmd:,} {it:func_name}{cmd:,} {it:arg_ptrs} [{cmd:,} {it:rv_ptr}]{cmd:)} aborts with error if{break}
-{it:class_name} is not a string scalar,{break}
-{it:func_name} is not a string scalar,{break}
+{cmd:mt_method_capture(}{it:inst_name}{cmd:,} {it:meth_name}{cmd:,} {it:arg_ptrs} [{cmd:,} {it:rv_ptr}]{cmd:)} aborts with error if{break}
+{it:inst_name} is not a string scalar,{break}
+{it:meth_name} is not a string scalar,{break}
 {it:arg_ptrs} is not a vector of pointers, or{break}
 {it:rv_ptr} (if used) is not a pointer scalar.
 
 {p 4 4 8}
 {cmd:mt_method_capture()} will return 3000 if there is no class with name 
-{it:class_name} or the class has no function with name {it:func_name}.
+{it:inst_name} or the class has no function with name {it:meth_name}.
 
 {pstd}
 {cmd:mt_method_capture()} will not work with classes defined within a function.
