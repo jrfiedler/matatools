@@ -4,18 +4,20 @@ matatools_capture.mata
 functions
 ---------
 
-- **mt_capture**(*func*, *args_ptrs* [, *rv_ptr*])
+- _real scalar_ **mt_capture**(*func*, *args_ptrs* [, *rv_ptr*])
     
     - *func* - pointer to function or string name
     - *arg_ptrs* - vector of pointers to *func*'s arguments; can be an empty matrix
     - *rv_ptr* - pointer to pre-defined variable to hold *func*'s return value; optional
+    - returns error number or zero if no error encountered
 	
-- **mt_method_capture**(*instance*, *method*, *args_ptrs* [, *rv_ptr*])
+- _real scalar_ **mt_method_capture**(*instance*, *method*, *args_ptrs* [, *rv_ptr*])
 
     - *instance* - string name of class instance
     - *method* - string name of method
     - *arg_ptrs* - vector of pointers to the method's arguments; can be an empty matrix
     - *rv_ptr* - pointer to pre-defined variable to hold *func*'s return value; optional 
+    - returns error number or zero if no error encountered
 
 examples
 --------

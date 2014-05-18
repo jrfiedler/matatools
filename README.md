@@ -9,6 +9,8 @@ This is a repository of miscellaneous tools that may be useful for Mata programm
 
 Descriptions, remarks, and examples are collected by file.
 
+[**matatools_asarray.mata**](README_asarray.md) - convenience functions for associative arrays
+
 [**matatools_capture.mata**](https://github.com/jrfiedler/matatools/blob/master/README_capture.md) - for capturing errors and/or output
 
 
