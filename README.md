@@ -11,7 +11,7 @@ Descriptions, remarks, and examples are collected by file.
 
 [**matatools_asarray.mata**](README_asarray.md) - convenience functions for associative arrays
 
-[**matatools_capture.mata**](https://github.com/jrfiedler/matatools/blob/master/README_capture.md) - for capturing errors and/or output
+[**matatools_capture.mata**](README_capture.md) - for capturing errors and/or output
 
 
 Authors
