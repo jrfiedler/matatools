@@ -1,7 +1,7 @@
 matatools
 =========
 
-A collection of tools for Stata's Mata language.
+A collection of tools for Stata's Mata language. 
 
 Description
 -----------
