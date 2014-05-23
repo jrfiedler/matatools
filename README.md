@@ -13,6 +13,8 @@ Descriptions, remarks, and examples are collected by file.
 
 [**matatools_capture.mata**](README_capture.md) - for capturing errors and/or output
 
+[**matatools_count.mata**](README_count.md) - functions for counting matrix contents
+
 
 Authors
 -------
