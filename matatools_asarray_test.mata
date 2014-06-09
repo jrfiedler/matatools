@@ -5,6 +5,8 @@ class AsarrayTest extends testcase {
 	void test_asarray_equal()
 	void test_asarray_update()
 	void test_asarray_build()
+	void test_asarray_keytype()
+	void test_asarray_keywidth()
 }
 
 void AsarrayTest::test_isasarray()
@@ -260,13 +262,49 @@ void AsarrayTest::test_asarray_build()
 	this.assert(asarray_notfound(B) == 999)
 }
 
+void AsarrayTest::test_asarray_keytype()
+{
+	transmorphic scalar A
+	
+	A = asarray_create()
+	this.assert_equal(mt_asarray_keytype(A), "string")
+	
+	A = asarray_create("real")
+	this.assert_equal(mt_asarray_keytype(A), "real")
+	
+	A = asarray_create("complex")
+	this.assert_equal(mt_asarray_keytype(A), "complex")
+	
+	A = asarray_create("pointer")
+	this.assert_equal(mt_asarray_keytype(A), "pointer")
+}
+
+void AsarrayTest::test_asarray_keywidth()
+{
+	transmorphic scalar A
+	
+	A = asarray_create("string", 1)
+	this.assert_equal(mt_asarray_keywidth(A), 1)
+	
+	A = asarray_create("real", 5)
+	this.assert_equal(mt_asarray_keywidth(A), 5)
+	
+	A = asarray_create("complex", 10)
+	this.assert_equal(mt_asarray_keywidth(A), 10)
+	
+	A = asarray_create("pointer", 50)
+	this.assert_equal(mt_asarray_keywidth(A), 50)
+}
+
 asarray_test = AsarrayTest()
 asarray_test.name = "asarray_test"
 asarray_test.test_names = (
 	"test_isasarray",
 	"test_asarray_equal",
 	"test_asarray_update",
-	"test_asarray_build"
+	"test_asarray_build",
+	"test_asarray_keytype",
+	"test_asarray_keywidth"
 )
 asarray_test.run()
 

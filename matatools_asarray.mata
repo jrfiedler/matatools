@@ -156,4 +156,28 @@ real scalar mt_asarray_equal(
 	return(1)
 }
 
+
+/**
+* @brief Return element type of an associative array's keys
+* @param A associative array
+* returns element type
+* @author James Fiedler
+*/
+string mt_asarray_keytype(struct AsArray_top scalar A)
+{
+	return(eltype(A.t.nullkey))
+}
+
+
+/**
+* @brief Return width of an associative array's keys
+* @param A associative array
+* returns number of columns in keys
+* @author James Fiedler
+*/
+real scalar mt_asarray_keywidth(struct AsArray_top scalar A)
+{
+	return(cols(A.t.nullkey))
+}
+
 end
