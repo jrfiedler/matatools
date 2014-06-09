@@ -21,7 +21,7 @@ mata
 	                       | pointer scalar rv_ptr)
 	{
 		real scalar rc, i, nargs
-		string scalar run_str, arg_template, ftype
+		string scalar func_run_str, run_str, arg_template, ftype
 		external class mt_Capture scalar mt_capture
 		
 		// It seems that any errors in pointer arguments get captured
