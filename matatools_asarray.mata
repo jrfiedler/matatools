@@ -111,7 +111,7 @@ transmorphic scalar mt_asarray_build(
 * @param A associative array
 * @param B associative array
 * @param notfound real scalar, whether A and B must have equal notfound values, default value is 0
-* returns 0 or 1
+* @returns 0 or 1
 * @author James Fiedler
 */
 real scalar mt_asarray_equal(
@@ -160,10 +160,10 @@ real scalar mt_asarray_equal(
 /**
 * @brief Return element type of an associative array's keys
 * @param A associative array
-* returns element type
+* @returns element type
 * @author James Fiedler
 */
-string mt_asarray_keytype(struct AsArray_top scalar A)
+string scalar mt_asarray_keytype(struct AsArray_top scalar A)
 {
 	return(eltype(A.t.nullkey))
 }
@@ -172,7 +172,7 @@ string mt_asarray_keytype(struct AsArray_top scalar A)
 /**
 * @brief Return width of an associative array's keys
 * @param A associative array
-* returns number of columns in keys
+* @returns number of columns in keys
 * @author James Fiedler
 */
 real scalar mt_asarray_keywidth(struct AsArray_top scalar A)

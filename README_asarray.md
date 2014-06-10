@@ -28,6 +28,16 @@ functions
     - *contents* - matrix with rows to be used as contents
     - *notfound* - value to be set as associative arrays's *notfound* value 
     - returns associative array
+	
+- _string scalar_ **mt_asarray_keytype**(*A*)
+
+    - *A* - associative array
+    - returns `eltype` of *A*'s keys
+	
+- _real scalar_ **mt_asarray_keywidth**(*A*)
+
+    - *A* - associative array
+    - returns number of columns in *A*'s keys
 
 examples
 --------
