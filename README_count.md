@@ -19,6 +19,33 @@ functions
     - *x* - transmorphic matrix (any type except struct or class)
     - returns associative array of counts of columns
 
+- _real scalar_ **mt_equal_counters**(*A*, *B*)
+    
+    - *A* - associative array (probably from one of the functions above)
+    - *B* - associative array (probably from one of the functions above)
+    - returns 0 or 1
+
+- _real scalar_ **mt_equal_contents**(*x*, *y*, *samecount*)
+    
+    - *x* - transmorphic
+    - *y* - transmorphic
+    - *samecount* - real scalar, determines whether elements must appear same number of times
+    - returns 0 or 1
+
+- _real scalar_ **mt_equal_row_contents**(*x*, *y*, *samecount*)
+    
+    - *x* - transmorphic
+    - *y* - transmorphic
+    - *samecount* - real scalar, determines whether rows must appear same number of times
+    - returns 0 or 1
+
+- _real scalar_ **mt_equal_col_contents**(*x*, *y*, *samecount*)
+    
+    - *x* - transmorphic
+    - *y* - transmorphic
+    - *samecount* - real scalar, determines whether columns must appear same number of times
+    - returns 0 or 1
+
 examples
 --------
 
@@ -62,6 +89,30 @@ examples
     : D = mt_count_cols(x')
     
     : mt_asarray_equal(C, D)
+      1
+    
+    : 
+    : 
+    : 
+    : 
+    : x = 1..15
+    
+    : y = (x[1..5] \ x[6..10] \ x[11..15])
+    
+    : mt_equal_contents(x, y)
+      1
+    
+    : x = round(runiform(5, 5))
+    
+    : y = round(runiform(5, 5))
+    
+    : mt_equal_contents(x, y)
+      0
+    
+    : mt_equal_contents(x, y, 0)
+      1
+    
+    : mt_equal_row_contents(x, sort(x, 1))
       1
 
 

@@ -92,5 +92,134 @@ transmorphic mt_count_cols(transmorphic x)
 	return(counter)
 }
 
+
+/**
+* @brief See if two associative array counters have the same keys (and same counts if `samecount` = 1)
+* @param a associative array counter
+* @param b associative array counter
+* @param samecount (optional) 0 or 1, whether elements must appear same number of times; default is 1
+* @returns 0 or 1
+* @author James Fiedler
+*/
+real scalar mt_equal_counters(
+	transmorphic acounter, transmorphic bcounter, | real scalar samecount
+)
+{
+	transmorphic loc, key
+	
+	if (args() == 2) {
+		samecount = 1
+	}
+	
+	if (mt_asarray_keytype(acounter) != mt_asarray_keytype(bcounter)) {
+		return(0)
+	}
+	
+	if (mt_asarray_keywidth(acounter) != mt_asarray_keywidth(bcounter)) {
+		return(0)
+	}
+	
+	if (asarray_elements(acounter) != asarray_elements(bcounter)) {
+		return(0)
+	}
+	
+	if (samecount) {
+		loc = asarray_first(acounter)
+		while (loc != NULL) {
+			key = asarray_key(acounter, loc)
+			if (asarray(acounter, key) != asarray(bcounter, key)) return(0)
+			loc = asarray_next(acounter, loc)
+		}
+	}
+	else {
+		loc = asarray_first(acounter)
+		while (loc != NULL) {
+			key = asarray_key(acounter, loc)
+			if (asarray(acounter, key) != 0 && asarray(bcounter, key) == 0) {
+				return(0)
+			}
+			loc = asarray_next(acounter, loc)
+		}
+	}
+	
+	return(1)
+}
+
+
+/**
+* @brief Check if two matrices (or scalars) have the same contents, regardless of arrangement
+* @param a transmorphic
+* @param b transmorphic
+* @param samecount (optional) 0 or 1, whether elements must appear same number of times; default is 1
+* @returns 0 or 1
+* @author James Fiedler
+*/
+real scalar mt_equal_contents(
+	transmorphic a, transmorphic b, | real scalar samecount
+)
+{
+	if (args() == 2) {
+		samecount = 1
+	}
+	
+	if (eltype(a) != eltype(b)) return(0)
+	
+	if (samecount & rows(a) * cols(a) != rows(b) * cols(b)) return(0)
+	
+	return(mt_equal_counters(mt_count(a), mt_count(b), samecount))
+}
+
+
+/**
+* @brief Check if two matrices (or scalars) have the same row contents, regardless of arrangement
+* @param a transmorphic
+* @param b transmorphic
+* @param samecount (optional) 0 or 1, whether elements must appear same number of times; default is 1
+* @returns 0 or 1
+* @author James Fiedler
+*/
+real scalar mt_equal_row_contents(
+	transmorphic a, transmorphic b, | real scalar samecount
+)
+{
+	if (args() == 2) {
+		samecount = 1
+	}
+	
+	if (eltype(a) != eltype(b)) return(0)
+	
+	if (cols(a) != cols(b)) return(0)
+	
+	if (samecount & rows(a) != rows(b)) return(0)
+	
+	return(mt_equal_counters(mt_count_rows(a), mt_count_rows(b), samecount))
+}
+
+
+/**
+* @brief Check if two matrices (or scalars) have the same column contents, regardless of arrangement
+* @param a transmorphic
+* @param b transmorphic
+* @param samecount (optional) 0 or 1, whether elements must appear same number of times; default is 1
+* @returns 0 or 1
+* @author James Fiedler
+*/
+real scalar mt_equal_col_contents(
+	transmorphic a, transmorphic b, | real scalar samecount
+)
+{
+	if (args() == 2) {
+		samecount = 1
+	}
+	
+	if (eltype(a) != eltype(b)) return(0)
+	
+	if (rows(a) != rows(b)) return(0)
+	
+	if (samecount & cols(a) != cols(b)) return(0)
+	
+	return(mt_equal_counters(mt_count_cols(a), mt_count_cols(b), samecount))
+}
+
 end
 
