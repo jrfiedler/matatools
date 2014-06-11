@@ -266,6 +266,11 @@ void AsarrayTest::test_asarray_keytype()
 {
 	transmorphic scalar A
 	
+	this.assert_error(., &mt_asarray_keytype(), &0)
+	this.assert_error(., &mt_asarray_keytype(), &(1 + 1i))
+	this.assert_error(., &mt_asarray_keytype(), &"a")
+	this.assert_error(., &mt_asarray_keytype(), &&"a")	
+	
 	A = asarray_create()
 	this.assert_equal(mt_asarray_keytype(A), "string")
 	
@@ -282,6 +287,11 @@ void AsarrayTest::test_asarray_keytype()
 void AsarrayTest::test_asarray_keywidth()
 {
 	transmorphic scalar A
+	
+	this.assert_error(., &mt_asarray_keywidth(), &0)
+	this.assert_error(., &mt_asarray_keywidth(), &(1 + 1i))
+	this.assert_error(., &mt_asarray_keywidth(), &"a")
+	this.assert_error(., &mt_asarray_keywidth(), &&"a")	
 	
 	A = asarray_create("string", 1)
 	this.assert_equal(mt_asarray_keywidth(A), 1)
